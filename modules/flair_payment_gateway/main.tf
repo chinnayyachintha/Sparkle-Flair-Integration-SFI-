@@ -48,7 +48,7 @@ resource "aws_api_gateway_method" "tokenize_method" {
     integration {
         type                    = "AWS_PROXY"
         integration_http_method = "POST"
-        uri                     = aws_lambda_function.tokenize.invoke_arn
+        uri                     = aws_lambda_function.tokenize_payment.invoke_arn
     }
 }
 
@@ -62,7 +62,7 @@ resource "aws_api_gateway_method" "decrypt_method" {
     integration {
         type                    = "AWS_PROXY"
         integration_http_method = "POST"
-        uri                     = aws_lambda_function.decrypt_sensitive.invoke_arn
+        uri                     = aws_lambda_function.decrypt_payment.invoke_arn
     }
 }
 
@@ -76,7 +76,7 @@ resource "aws_api_gateway_method" "apply_rules_method" {
     integration {
         type                    = "AWS_PROXY"
         integration_http_method = "POST"
-        uri                     = aws_lambda_function.apply_rules.invoke_arn
+        uri                     = aws_lambda_function.apply_business_rules.invoke_arn
     }
 }
 
@@ -90,7 +90,7 @@ resource "aws_api_gateway_method" "encrypt_method" {
     integration {
         type                    = "AWS_PROXY"
         integration_http_method = "POST"
-        uri                     = aws_lambda_function.encrypt_payment_data.invoke_arn
+        uri                     = aws_lambda_function.encrypt_payment.invoke_arn
     }
 }
 
@@ -104,7 +104,7 @@ resource "aws_api_gateway_method" "post_method" {
     integration {
         type                    = "AWS_PROXY"
         integration_http_method = "POST"
-        uri                     = aws_lambda_function.post_request.invoke_arn
+        uri                     = aws_lambda_function.post_payment.invoke_arn
     }
 }
 

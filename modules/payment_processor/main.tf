@@ -27,7 +27,7 @@ resource "aws_api_gateway_method" "process_method" {
     integration {
         type                    = "AWS_PROXY"
         integration_http_method = "POST"
-        uri                     = aws_lambda_function.payment_process.invoke_arn
+        uri                     = aws_lambda_function.process_payment.invoke_arn
     }
 }
 
