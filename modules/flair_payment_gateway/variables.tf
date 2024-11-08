@@ -1,5 +1,5 @@
 # The name of the API Gateway
-variable "payment_gateway_api_name" {
+variable "flair_payment_gateway_api_name" {
     description = "The name of the API Gateway"
     type        = string
 }

@@ -1,24 +1,30 @@
-# The ID of the API Gateway REST API for the website request API
-output "api_gateway_rest_api_id" {
-    value = aws_api_gateway_rest_api.website_request_api.id
+# API Gateway ID:
+output "website_request_api_id" {
+  value = aws_api_gateway_rest_api.website_request_api.id
+  description = "The ID of the API Gateway for the New Flair Website requests."
 }
 
-# The root resource ID of the API Gateway REST API for the website request API
-output "api_gateway_rest_api_root_resource_id" {
-    value = aws_api_gateway_rest_api.website_request_api.root_resource_id
+# API Gateway URL:
+output "website_request_api_url" {
+  value = aws_api_gateway_rest_api.website_request_api.execution_arn
+  description = "The URL of the API Gateway for accepting reservation and payment data."
 }
 
-# The ID of the API Gateway resource for the request resource
-output "api_gateway_request_resource_id" {
-    value = aws_api_gateway_resource.request_resource.id
+# API Gateway Resource Path:
+output "request_resource_path" {
+  value = aws_api_gateway_resource.request_resource.path
+  description = "Path for the API Gateway resource used to send requests to the Flair Payment Gateway."
 }
 
-# The HTTP method of the API Gateway method for the request method
-output "api_gateway_request_method_http_method" {
-    value = aws_api_gateway_method.request_method.http_method
+# API Gateway Deployment URL (combines the api_id and stage for easier testing):
+output "website_request_stage_url" {
+  value = "${aws_api_gateway_rest_api.website_request_api.execution_arn}/${aws_api_gateway_deployment.website_request_deployment.stage_name}"
+  description = "Full URL of the deployed API Gateway endpoint."
 }
 
-# The ID of the API Gateway deployment for the website request deployment
-output "api_gateway_deployment_id" {
-    value = aws_api_gateway_deployment.website_request_deployment.id
+# Lambda Integration URI for API Gateway (useful for testing in tools like Postman):
+output "request_handler_integration_uri" {
+  value = aws_api_gateway_method.request_method.integration.uri
+  description = "The URI used by API Gateway to integrate with the Lambda function."
 }
+

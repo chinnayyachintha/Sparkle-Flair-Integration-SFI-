@@ -1,67 +1,51 @@
-# AWS Region where resources will be deployed
-aws_region = "us-west-2"
+aws_region = "ca-central-1"
 
-# API Gateway variables
-website_request_api_name = "website-request-api"
-receive_transaction_result_api_name = "receive-transaction-result-api"
-payment_gateway_response_api_name = "payment-gateway-response-api"
-payment_processor_api_name = "payment-processor-api"
-payment_gateway_api_name = "payment-gateway-api"
-stage_name = "dev"
+website_request_api_name                = "new_flair_website_request_api"
+stage_name                              = "dev"
+flair_payment_gateway_api_name          = "flair_payment_gateway_api"
+payment_processor_api_name              = "payment_processor_api"
+flair_payment_gateway_response_api_name = "flair_payment_gateway_response_api"
+receive_transaction_result_api_name     = "receive_transaction_result_api"
 
-# Lambda function variables
-# Variables for the request handler Lambda function
-request_handler_function_name = "request-handler-function"
-request_lambda_filename = "request_handler.zip"
-payment_gateway_api_url = "https://api.paymentgateway.com"
+request_handler_function_name = "request_handler"
+request_lambda_filename       = "request_handler.zip"
+payment_gateway_api_url       = "https://api.flairpaymentgateway.com"
 
-# Variables for the tokenize function Lambda function
-tokenize_function_name = "tokenize-function"
-token_lambda_filename = "tokenize_function.zip"
-api_key = "your-api-key"
+tokenize_function_name = "tokenize_payment"
+token_lambda_filename  = "tokenize_payment.zip"
+api_key                = "your_api_key_here"
 
-# Variables for the decrypt function Lambda function
-decrypt_function_name = "decrypt-function"
-decrypt_lambda_filename = "decrypt_function.zip"
-decrypt_sensitive_key = "your-decrypt-sensitive-key"
+decrypt_function_name   = "decrypt_payment_info"
+decrypt_lambda_filename = "decrypt_payment_info.zip"
+decrypt_sensitive_key   = "your_decrypt_sensitive_key_here"
 
-# Variables for the apply rules Lambda function
-apply_rules_function_name = "apply-rules-function"
-apply_rules_lambda_filename = "apply_rules_function.zip"
-rules_api_endpoint = "https://api.rules.com"
+apply_rules_function_name   = "apply_business_rules"
+apply_rules_lambda_filename = "apply_business_rules.zip"
+rules_api_endpoint          = "https://api.businessrules.com"
 
-# Variables for the encrypt function Lambda function
-encrypt_function_name = "encrypt-function"
-encrypt_lambda_filename = "encrypt_function.zip"
-encrypt_key = "your-encrypt-key"
+encrypt_function_name   = "encrypt_payment_info"
+encrypt_lambda_filename = "encrypt_payment_info.zip"
+encrypt_key             = "your_encrypt_key_here"
 
-# Variables for the post function Lambda function
-post_function_name = "post-function"
-post_lambda_filename = "post_function.zip"
+post_function_name    = "post_to_payment_processor"
+post_lambda_filename  = "post_to_payment_processor.zip"
 payment_processor_api = "https://api.paymentprocessor.com"
 
-# Variables for the process function Lambda function
-process_function_name = "process-function"
-process_lambda_filename = "process_function.zip"
-payment_api_key = "your-payment-api-key"
-security_token = "your-security-token"
+process_function_name   = "process_payment"
+process_lambda_filename = "process_payment.zip"
+payment_api_key         = "your_payment_api_key_here"
+security_token          = "your_security_token_here"
 
-# Variables for the post response Lambda function
-response_url = "https://response.url"
+response_url         = "https://api.response.com"
+decrypt_response_key = "your_decrypt_response_key_here"
 
-# Variables for the decrypt response Lambda function
-decrypt_response_key = "your-decrypt-response-key"
+record_function_name   = "record_transaction"
+record_lambda_filename = "record_transaction.zip"
 
-# Variables for the record function Lambda function
-record_function_name = "record-function"
-record_lambda_filename = "record_function.zip"
-receive_function_name = "receive-function"
-receive_lambda_filename = "receive_function.zip"
+post_final_function_name   = "post_final_response"
+post_final_lambda_filename = "post_final_response.zip"
+final_response_url         = "https://api.finalresponse.com"
 
-# Variables for the confirmation URL Lambda function
-confirmation_url = "https://confirmation.url"
-
-# IAM configurations
-role_name = "lambda-execution-role"
-policy_name = "lambda-execution-policy"
-policy_description = "IAM policy granting Lambda execution permissions"
+receive_function_name   = "receive_flair_response"
+receive_lambda_filename = "receive_flair_response.zip"
+confirmation_url        = "https://api.confirmation.com"

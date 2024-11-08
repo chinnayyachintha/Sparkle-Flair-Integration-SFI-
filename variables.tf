@@ -4,38 +4,43 @@ variable "aws_region" {
   description = "AWS Region to deploy resources"
 }
 
-# API Gateway variables
+# The name of the API Gateway for accepting reservation and payment data from the New Flair Website
 variable "website_request_api_name" {
   description = "The name of the API Gateway for accepting reservation and payment data from the New Flair Website"
   type        = string
 }
 
-variable "receive_transaction_result_api_name" {
-  description = "The name of the API Gateway for receiving transaction results"
-  type        = string
-}
-
-variable "payment_gateway_response_api_name" {
-  description = "The name of the API Gateway for flair payment gateway response"
-  type        = string
-}
-
-variable "payment_processor_api_name" {
-  description = "The name of the API Gateway"
-  type        = string
-}
-
-variable "payment_gateway_api_name" {
-  description = "The name of the API Gateway"
-  type        = string
-}
-
+# The stage name for the API Gateway deployment
 variable "stage_name" {
   description = "The stage name for the API Gateway deployment"
   type        = string
 }
 
-# Lambda function variables
+# The name of the API Gateway
+variable "flair_payment_gateway_api_name" {
+  description = "The name of the API Gateway"
+  type        = string
+}
+
+# The name of the API Gateway
+variable "payment_processor_api_name" {
+  description = "The name of the API Gateway"
+  type        = string
+}
+
+# The name of the API Gateway for flair payment gateway response
+variable "flair_payment_gateway_response_api_name" {
+  description = "The name of the API Gateway for flair payment gateway response"
+  type        = string
+}
+
+# The name of the API Gateway for receiving transaction results
+variable "receive_transaction_result_api_name" {
+  description = "The name of the API Gateway for receiving transaction results"
+  type        = string
+}
+
+# lambda function variables
 variable "request_handler_function_name" {
   description = "Name of the Lambda function to handle requests from the New Flair Website"
   type        = string
@@ -62,7 +67,7 @@ variable "token_lambda_filename" {
 }
 
 variable "api_key" {
-  description = "API key for tokenizing payment information"
+  description = "API key for the payment gateway"
   type        = string
 }
 
@@ -92,7 +97,7 @@ variable "apply_rules_lambda_filename" {
 }
 
 variable "rules_api_endpoint" {
-  description = "API endpoint for applying business rules"
+  description = "API endpoint for the business rules"
   type        = string
 }
 
@@ -137,12 +142,12 @@ variable "process_lambda_filename" {
 }
 
 variable "payment_api_key" {
-  description = "API key for payment processing"
+  description = "API key for the payment processor"
   type        = string
 }
 
 variable "security_token" {
-  description = "Security token for payment processing"
+  description = "Security token for the payment processor"
   type        = string
 }
 
@@ -166,6 +171,21 @@ variable "record_lambda_filename" {
   type        = string
 }
 
+variable "post_final_function_name" {
+  description = "Name of the Lambda function for posting the final transaction response"
+  type        = string
+}
+
+variable "post_final_lambda_filename" {
+  description = "Filename of the Lambda function for posting the final transaction response"
+  type        = string
+}
+
+variable "final_response_url" {
+  description = "URL for posting the final transaction response"
+  type        = string
+}
+
 variable "receive_function_name" {
   description = "Name of the Lambda function to handle the response from the Flair Payment Gateway"
   type        = string
@@ -179,21 +199,4 @@ variable "receive_lambda_filename" {
 variable "confirmation_url" {
   description = "URL for confirming transaction completion"
   type        = string
-}
-
-# IAM configurations
-variable "role_name" {
-  description = "The name of the IAM role for Lambda execution"
-  type        = string
-}
-
-variable "policy_name" {
-  description = "The name of the IAM policy for Lambda execution"
-  type        = string
-}
-
-variable "policy_description" {
-  description = "The description of the IAM policy for Lambda execution"
-  type        = string
-  default     = "IAM policy granting Lambda execution permissions"
 }

@@ -1,29 +1,24 @@
-# The ID of the Payment Processor API Gateway REST API
+# Payment Processor API ID:
 output "payment_processor_api_id" {
-    value = aws_api_gateway_rest_api.payment_processor_api.id
+  value = aws_api_gateway_rest_api.payment_processor_api.id
+  description = "The ID of the API Gateway for the Payment Processor."
 }
 
-# The ID of the process resource in the API Gateway
-output "process_resource_id" {
-    value = aws_api_gateway_resource.process_resource.id
+# API Gateway Deployment URL:
+output "payment_processor_stage_url" {
+  value = "${aws_api_gateway_rest_api.payment_processor_api.execution_arn}/${aws_api_gateway_deployment.payment_processor_deployment.stage_name}"
+  description = "The full URL of the deployed API Gateway for the Payment Processor."
 }
 
-# The ID of the post resource in the API Gateway
-output "post_resource_id" {
-    value = aws_api_gateway_resource.post_resource.id
+# Individual Resource Paths:
+# Process Resource
+output "process_resource_path" {
+  value = aws_api_gateway_resource.process_resource.path
+  description = "Path for the API Gateway 'process' resource."
 }
 
-# The ID of the process method in the API Gateway
-output "process_method_id" {
-    value = aws_api_gateway_method.process_method.id
-}
-
-# The ID of the post method in the API Gateway
-output "post_method_id" {
-    value = aws_api_gateway_method.post_method.id
-}
-
-# The ID of the deployment for the Payment Processor API Gateway
-output "payment_processor_deployment_id" {
-    value = aws_api_gateway_deployment.payment_processor_deployment.id
+# Post Resource
+output "post_resource_path" {
+  value = aws_api_gateway_resource.post_resource.path
+  description = "Path for the API Gateway 'post' resource."
 }
